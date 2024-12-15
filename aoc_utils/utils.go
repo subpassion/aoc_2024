@@ -46,6 +46,13 @@ func ToNumber(number string) int64 {
 	return res
 }
 
+func ToFloatNumber(number string) float64 {
+	processed_number := strings.TrimSpace(number)
+	res, err := strconv.ParseFloat(processed_number, 64)
+	Report(err)
+	return res
+}
+
 func IsNumber(input string) bool {
 	number := strings.TrimSpace(input)
 	for _, ch := range number {
