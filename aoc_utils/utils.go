@@ -9,19 +9,19 @@ import (
 )
 
 type Point struct {
-	x int64
-	y int64
+	X int64
+	Y int64
 }
 
 type Grid [][]int64
 type StrGrid []string
 
-func (grid Grid) InRange(x, y int) bool {
-	return x >= 0 && x < len(grid) && y >= 0 && y < len(grid[0])
+func (grid Grid) InRange(x, y int64) bool {
+	return x >= 0 && x < int64(len(grid)) && y >= 0 && y < int64(len(grid[0]))
 }
 
-func (grid StrGrid) InRange(x, y int) bool {
-	return x >= 0 && x < len(grid) && y >= 0 && y < len(grid[0])
+func (grid StrGrid) InRange(x, y int64) bool {
+	return x >= 0 && x < int64(len(grid)) && y >= 0 && y < int64(len(grid[0]))
 }
 
 func (grid Grid) Print() {
@@ -100,4 +100,11 @@ func Reverse[T any](slice []T) []T {
 		reversed[i], reversed[j] = reversed[j], reversed[i]
 	}
 	return reversed
+}
+
+func Abs(value int64) int64 {
+	if value > 0 {
+		return value
+	}
+	return -1 * value
 }
